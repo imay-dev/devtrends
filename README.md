@@ -4,7 +4,7 @@
 [![Next.js Version](https://img.shields.io/badge/Next.js-14.1.0-000000?logo=next.js)](https://nextjs.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-A real-time developer trends dashboard aggregating data from GitHub, npm, and Stack Overflow.
+A real-time developer trends **[dashboard](https://devtrends.vercel.app/)** aggregating data from GitHub, npm, and Stack Overflow.
 
 ![Dashboard Preview](public/screenshot.png)
 
