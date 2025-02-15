@@ -11,7 +11,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { useDateRange } from './GlobalDateRange';
+import { DateRange, useDateRange } from './GlobalDateRange';
 import ErrorAlert from './ErrorAlert';
 
 ChartJS.register(
@@ -36,10 +36,10 @@ const COLORS = {
 export default function NpmChart() {
   const { range } = useDateRange();
 
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading, error } = useQuery<NpmPackage[]>({
     queryKey: ['npm-downloads', range],
     queryFn: async () => {
-      const response = await fetch(`/api/npm?range=${range}`);
+      const response = await fetch(`/api/npm?range=${range as DateRange}`);
       if (!response.ok) throw new Error('Failed to fetch npm data');
       return response.json();
     },
@@ -49,7 +49,11 @@ export default function NpmChart() {
   if (isLoading)
     return <div className="h-64 bg-gray-50 rounded-lg animate-pulse" />;
 
-  if (error) return <ErrorAlert message={error.message} />;
+  if (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error occurred';
+    return <ErrorAlert message={errorMessage} />;
+  }
 
   return (
     <div className="p-6 bg-white rounded-lg border">

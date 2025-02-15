@@ -2,7 +2,7 @@
 import { useQuery } from 'react-query';
 import LoadingSkeleton from './LoadingSkeleton';
 import ErrorAlert from './ErrorAlert';
-import { useDateRange } from './GlobalDateRange';
+import { DateRange, useDateRange } from './GlobalDateRange';
 
 export default function RepoTable() {
   const { range } = useDateRange();
@@ -10,7 +10,7 @@ export default function RepoTable() {
   const { data, isLoading, isFetching, error } = useQuery({
     queryKey: ['github-repos', range],
     queryFn: async () => {
-      const response = await fetch(`/api/github?range=${range}`);
+      const response = await fetch(`/api/github?range=${range as DateRange}`);
       if (!response.ok) throw new Error('Failed to fetch');
       return response.json();
     },
@@ -20,7 +20,11 @@ export default function RepoTable() {
     console.log(isLoading, isFetching);
     return <LoadingSkeleton />;
   }
-  if (error) return <ErrorAlert message={error.message} />;
+  if (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error occurred';
+    return <ErrorAlert message={errorMessage} />;
+  }
 
   return (
     <div className="overflow-x-auto rounded-lg">
@@ -42,7 +46,7 @@ export default function RepoTable() {
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200">
-          {data?.map((repo) => (
+          {data?.map((repo: GitHubRepo) => (
             <tr
               key={repo.id}
               className="odd:bg-white odd:light:bg-gray-900 even:bg-gray-50 even:light:bg-gray-800 dark:border-gray-700 border-gray-200"

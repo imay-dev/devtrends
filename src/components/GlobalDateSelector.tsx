@@ -1,7 +1,7 @@
 // components/GlobalDateSelector.tsx
 'use client';
 
-import { useDateRange } from './GlobalDateRange';
+import { DateRange, useDateRange } from './GlobalDateRange';
 import { format } from 'date-fns';
 
 export default function GlobalDateSelector() {
@@ -32,9 +32,9 @@ export default function GlobalDateSelector() {
 
   const { start, end } = getDateRange();
   const ranges = [
-    { label: 'Last 7 Days', value: 'week' },
-    { label: 'Last 30 Days', value: 'month' },
-    { label: 'Last Year', value: 'year' },
+    { label: 'Last 7 Days', value: 'week' as DateRange },
+    { label: 'Last 30 Days', value: 'month' as DateRange },
+    { label: 'Last Year', value: 'year' as DateRange },
   ];
 
   return (

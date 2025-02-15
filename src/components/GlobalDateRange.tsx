@@ -3,7 +3,7 @@
 
 import { useState, createContext, useContext } from 'react';
 
-type DateRange = 'week' | 'month' | 'year';
+export type DateRange = 'week' | 'month' | 'year';
 const DateRangeContext = createContext<{
   range: DateRange;
   setRange: (range: DateRange) => void;
