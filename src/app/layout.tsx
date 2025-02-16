@@ -1,6 +1,7 @@
 import { DateRangeProvider } from '@/components/GlobalDateRange';
 import { Providers } from './providers';
 import '@/app/globals.css';
+import Footer from '@/components/Footer';
 
 export default function RootLayout({
   children,
@@ -13,6 +14,7 @@ export default function RootLayout({
         <DateRangeProvider>
           <Providers>{children}</Providers>
         </DateRangeProvider>
+        <Footer />
       </body>
     </html>
   );
