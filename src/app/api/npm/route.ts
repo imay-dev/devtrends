@@ -15,7 +15,7 @@ export async function GET(request: Request) {
     year: 365
   }[range as keyof object] || 7);
 
-  const packages = ["react", "vue", "svelte", "next"];
+  const packages = ["node", "express", "angular", "react", "vue", "svelte", "next"];
 
   try {
     const downloadData = await Promise.all(
@@ -29,7 +29,6 @@ export async function GET(request: Request) {
         };
       })
     );
-
     return NextResponse.json(downloadData);
   } catch (error) {
     return NextResponse.json(

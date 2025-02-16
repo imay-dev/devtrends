@@ -25,8 +25,8 @@ export default function GlobalDateSelector() {
     }
 
     return {
-      start: format(startDate, 'MMM dd'),
-      end: format(today, 'MMM dd'),
+      start: format(startDate, 'MMM dd, yyyy'),
+      end: format(today, 'MMM dd, yyyy'),
     };
   };
 

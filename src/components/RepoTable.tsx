@@ -17,7 +17,6 @@ export default function RepoTable() {
   });
 
   if (isLoading || isFetching) {
-    console.log(isLoading, isFetching);
     return <LoadingSkeleton />;
   }
   if (error) {

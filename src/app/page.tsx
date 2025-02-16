@@ -1,7 +1,8 @@
 import GlobalDateSelector from '@/components/GlobalDateSelector';
-import { GitHubIcon, NpmIcon } from '@/components/Icons';
+import { GitHubIcon, NpmIcon, StackOverflowIcon } from '@/components/Icons';
 import NpmChart from '@/components/NpmChart';
 import RepoTable from '@/components/RepoTable';
+import StackOverflowTrends from '@/components/StackOverflowTrends';
 
 export default function Home() {
   return (
@@ -21,7 +22,7 @@ export default function Home() {
       </div>
 
       {/* npm Section */}
-      <div className="bg-white rounded-xl shadow-sm p-6">
+      <div className="bg-white rounded-xl shadow-sm p-6 mb-2">
         <div className="flex items-center gap-2 mb-4">
           <NpmIcon className="w-8 h-8 text-red-500" />
           <h2 className="text-2xl font-bold text-gray-800">
@@ -29,6 +30,17 @@ export default function Home() {
           </h2>
         </div>
         <NpmChart />
+      </div>
+
+      {/* Stack Overflow Section */}
+      <div className="bg-white rounded-xl shadow-sm p-6">
+        <div className="flex items-center gap-2 mb-4">
+          <StackOverflowIcon className="w-8 h-8 text-red-500" />
+          <h2 className="text-2xl font-bold text-gray-800">
+            Stack Overflow Trends
+          </h2>
+        </div>
+        <StackOverflowTrends />
       </div>
     </main>
   );
